@@ -154,34 +154,33 @@ public static class MenuActions
         };
     }
 
-    public static void AddDemoData(List<Asset> assetsList)
+    public static void AddDemoData()
     {
+        var categories = _storage.GetCategories();
+        var offices = _storage.GetOfficeLocations();
+        var assets = _storage.LoadAssets();
+
         Asset newProduct1 = new Asset();
-        Category category = new Category();
-        category.CategoryName = "Laptop";
-        Office office = new Office();
-        office.OfficeLocation = "New York";
         newProduct1.Brand = "Apple";
         newProduct1.ModelName = "Macbook pro";
         newProduct1.PurchaseDate = new DateTime(2025,12,10);
         newProduct1.Price = 3000.00;
-        newProduct1.Category = category;
-        newProduct1.Office = office;
-
-        assetsList.Add(newProduct1);
+        newProduct1.CategoryId = categories.FirstOrDefault(c => c.CategoryName == "Laptop").CategoryId;
+        newProduct1.OfficeId = offices.FirstOrDefault(o => o.OfficeLocation == "New York").OfficeId;
 
         Asset newProduct2 = new Asset();
-        Category category2 = new Category();
-        category2.CategoryName = "Phone";
-        Office office2 = new Office();
-        office.OfficeLocation = "London";
         newProduct2.Brand = "Apple";
         newProduct2.ModelName = "iPhone 13";
         newProduct2.PurchaseDate = new DateTime(2025,12,10);
         newProduct2.Price = 2000.00;
-        newProduct2.Category = category2;
-        newProduct2.Office = office;
+        newProduct2.CategoryId = categories.FirstOrDefault(c => c.CategoryName == "Phone").CategoryId;
+        newProduct2.OfficeId = offices.FirstOrDefault(o => o.OfficeLocation == "London").OfficeId;
 
-        assetsList.Add(newProduct2);
+
+        if (assets.Count == 0)
+        {
+            _storage.SaveAsset(newProduct1);
+            _storage.SaveAsset(newProduct2);
+        }
     }
 }

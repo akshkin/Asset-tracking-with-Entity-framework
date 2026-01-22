@@ -13,7 +13,12 @@ while (!hasQuit)
     Console.WriteLine("ASSET TRACKING - TRACK YOUR ASSETS HERE");
     Console.WriteLine();
   
-    if (assetsList.Count == 0)  MenuActions.AddDemoData(assetsList);
+    if (assetsList.Count == 0)  
+    {
+        MenuActions.AddDemoData();
+        ConsoleHelpers.WriteColoredText(ConsoleColor.Green, "Demo data populated");
+        Console.WriteLine();
+    };
 
     MenuManager.ShowMenu();
 

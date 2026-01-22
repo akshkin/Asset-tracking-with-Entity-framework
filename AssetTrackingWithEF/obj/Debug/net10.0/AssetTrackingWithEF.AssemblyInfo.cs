@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AssetTrackingWithEF")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b2df675f09374c063e8de1bd1b7fd7ae4640b6b7")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+453d9ceba064d836700e54968fdc50ec4c0284a8")]
 [assembly: System.Reflection.AssemblyProductAttribute("AssetTrackingWithEF")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AssetTrackingWithEF")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
