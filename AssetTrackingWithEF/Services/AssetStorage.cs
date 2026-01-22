@@ -3,25 +3,36 @@
 namespace AssetTrackingWithEF.Services
 {
     public class AssetStorage
-    {
-        private MyDbContext _context = new MyDbContext();
-
-
-
-       
+    {       
         public static List<Asset> LoadAssets()
         {
-            return  new List<Asset>();
+            using var context = new MyDbContext();
+            context.Assets.ToList();
+            return context.Assets.ToList();
         }
 
-        public List<Asset> GetAssets()
+        public static List<string> GetCategories()
         {
-            var assets = new List<Asset>();
-            return assets;
+            using var context = new MyDbContext();
+            return context.Categories.Select(x => x.CategoryName).ToList();
         }
 
-        public static void SaveAssets(List<Asset> assets)
+        public static List<string> GetOfficeLocations()
         {
+            using var context = new MyDbContext();
+            return context.Offices.Select(o => o.OfficeLocation).ToList();
+        }
+
+        public static void SaveAsset(Asset asset)
+        {
+            using var context = new MyDbContext();
+            context.Assets.Add(asset);
+        }
+
+        public static void DeleteAsset(Asset asset) 
+        {
+            using var context = new MyDbContext();
+            context.Assets.Remove(asset);
         }
     }
 }
