@@ -4,8 +4,11 @@ namespace AssetTrackingWithEF.Services
 {
     public class AssetStorage
     {
-        private readonly string connectionString = "Server=(localdb)\\mssqllocaldb;Database=Assets;Trusted_Connection=True;";
+        private MyDbContext _context = new MyDbContext();
 
+
+
+       
         public static List<Asset> LoadAssets()
         {
             return  new List<Asset>();
