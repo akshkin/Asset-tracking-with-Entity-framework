@@ -1,4 +1,6 @@
 ﻿
+using AssetTrackingWithEF.Models;
+
 namespace AssetTrackingWithEF.Helpers;
 
 public static class ConsoleHelpers
@@ -55,4 +57,21 @@ public static class ConsoleHelpers
             Console.ResetColor();
         }
     }
+
+    public static void RenderAssets(List<Asset> assetsList, int index)
+    {
+        for (int i = 0; i < assetsList.Count; i++)
+        {
+            var asset = assetsList[i];
+            if (i == index)
+            {
+                Console.BackgroundColor = ConsoleColor.DarkCyan;
+                Console.ForegroundColor = ConsoleColor.Black;
+            }
+
+            Console.WriteLine($"{asset.AssetId,-4}{asset.Category.CategoryName,-25}{asset.Brand,-15}{asset.ModelName,-15}{asset.Price,-10}{asset.PurchaseDate,-10}");
+            Console.ResetColor();
+        }
+    }
+
 }

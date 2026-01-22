@@ -6,8 +6,11 @@ namespace AssetTrackingWithEF.Services;
 public static class MenuActions
 {
     private static readonly AssetStorage _storage = new AssetStorage();
-    public static void ShowAssetsTable(List<Asset> assetsList, int index = -1)
+    public static void ShowAssetsTable(int index = -1)
     {
+        var assetsList = _storage.LoadAssets();
+        var categories = _storage.GetCategories();
+
         if (assetsList.Count == 0)
         {
             Console.WriteLine("No assets yet");
@@ -16,18 +19,7 @@ public static class MenuActions
         Console.WriteLine();
         Console.WriteLine($"{"No.",-4}{"Category",-25}{"Brand",-15}{"Model",-15}{"Price",-10}{"Due Date",-10}");
 
-        for (int i = 0; i < assetsList.Count; i++)
-        {
-            var asset = assetsList[i];
-            if (i == index)
-            {
-                Console.BackgroundColor = ConsoleColor.DarkCyan;
-                Console.ForegroundColor = ConsoleColor.Black;
-            }
-
-            Console.WriteLine($"{asset.AssetId,-4}{asset.Category.CategoryName,-25}{asset.Brand,-15}{asset.ModelName,-15}{asset.Price,-10}{asset.PurchaseDate,-10}");
-            Console.ResetColor();
-        }
+        ConsoleHelpers.RenderAssets(assetsList, -1);
         Console.WriteLine();
     }
 
@@ -81,8 +73,9 @@ public static class MenuActions
         {
             Console.WriteLine("Which asset do you want to edit? Use arrow keys to navigate up and dowm");
 
-            Asset selectedAsset = ConsoleHelpers.RenderAndSelectFromList(assetsList, MenuActions.ShowAssetsTable);
-                
+            Asset selectedAsset = ConsoleHelpers.RenderAndSelectFromList(assetsList, ConsoleHelpers.RenderAssets);
+
+
             if (selectedAsset != null)
             {
                 Console.WriteLine("What would you like to edit? Press 'Enter' to keep the previous value");
@@ -141,7 +134,7 @@ public static class MenuActions
     {
         Console.WriteLine("Which asset do you want to edit? Use arrow keys to navigate up and dowm");
 
-        Asset selectedAsset = ConsoleHelpers.RenderAndSelectFromList(assetsList, MenuActions.ShowAssetsTable);
+        Asset selectedAsset = ConsoleHelpers.RenderAndSelectFromList(assetsList, ConsoleHelpers.RenderAssets);
 
         if (selectedAsset != null) 
         {
@@ -160,7 +153,7 @@ public static class MenuActions
     }
 
     public static void AddDemoData(List<Asset> assetsList)
-{
+    {
         Asset newProduct1 = new Asset();
         Category category = new Category();
         category.CategoryName = "Laptop";

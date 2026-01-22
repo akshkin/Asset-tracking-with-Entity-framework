@@ -1,4 +1,5 @@
 ﻿using AssetTrackingWithEF.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace AssetTrackingWithEF.Services
 {
@@ -7,8 +8,8 @@ namespace AssetTrackingWithEF.Services
         public List<Asset> LoadAssets()
         {
             using var context = new MyDbContext();
-            context.Assets.ToList();
-            return context.Assets.ToList();
+            var assets = context.Assets.Include(a => a.Category).Include(a => a.Office).ToList();
+            return assets;
         }
 
         public List<Category> GetCategories()
