@@ -11,28 +11,30 @@ namespace AssetTrackingWithEF.Services
             return context.Assets.ToList();
         }
 
-        public List<string> GetCategories()
+        public List<Category> GetCategories()
         {
             using var context = new MyDbContext();
-            return context.Categories.Select(x => x.CategoryName).ToList();
+            return context.Categories.ToList();
         }
 
-        public List<string> GetOfficeLocations()
+        public List<Office> GetOfficeLocations()
         {
             using var context = new MyDbContext();
-            return context.Offices.Select(o => o.OfficeLocation).ToList();
+            return context.Offices.ToList();
         }
 
         public void SaveAsset(Asset asset)
         {
             using var context = new MyDbContext();
             context.Assets.Add(asset);
+            context.SaveChanges();
         }
 
         public void DeleteAsset(Asset asset) 
         {
             using var context = new MyDbContext();
             context.Assets.Remove(asset);
+            context.SaveChanges();
         }
     }
 }

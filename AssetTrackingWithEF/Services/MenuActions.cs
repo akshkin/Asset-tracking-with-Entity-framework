@@ -5,6 +5,7 @@ namespace AssetTrackingWithEF.Services;
 
 public static class MenuActions
 {
+    private static readonly AssetStorage _storage = new AssetStorage();
     public static void ShowAssetsTable(List<Asset> assetsList, int index = -1)
     {
         if (assetsList.Count == 0)
@@ -33,37 +34,37 @@ public static class MenuActions
     public static void AddAsset(List<Asset> assetsList)
     {
         Console.WriteLine(@"Enter product type - 'Computer' or 'Phone' :  ", "Product Type");
-        var categories = new List<string> { "Computer", "Mobile" };
 
-        string selectedCategory = ConsoleHelpers.RenderAndSelectFromList(categories, ConsoleHelpers.RenderList);
-        Category category = new Category();
+        var categories = _storage.GetCategories();
+        var categoryNames = categories.Select(c => c.CategoryName).ToList();
 
-        category.CategoryName = selectedCategory;
+        var offices = _storage.GetOfficeLocations();
+        var officeLocations = offices.Select(o => o.OfficeLocation).ToList();
+
+        string selectedCategory = ConsoleHelpers.RenderAndSelectFromList(categoryNames, ConsoleHelpers.RenderList);
 
         string Brand = Validators.ValidateInput("Enter brand of the product : ", "Brand");
         string Model = Validators.ValidateInput("Enter product model : ", "Model");
 
-
-        var offices = new List<string> { "New York", "London", "Tokyo" };
-        string officeLocation = ConsoleHelpers.RenderAndSelectFromList(offices, ConsoleHelpers.RenderList);
-
-        Office office = new Office();
-
-        office.OfficeLocation = officeLocation;
+        string selectedOffice = ConsoleHelpers.RenderAndSelectFromList(officeLocations, ConsoleHelpers.RenderList);
 
         DateTime PurchaseDate = Validators.ValidateDate("Enter purchase date in format YYYY-MM-DD : ");
 
         double PricePaid = Validators.ValidateDouble("Enter price in USD for the product : ");
+
+        var assetCategory = categories.First(c => c.CategoryName == selectedCategory);
+        var assetOffice = offices.First(o => o.OfficeLocation == selectedOffice);
 
         Asset newProduct = new Asset();
         newProduct.Brand = Brand;
         newProduct.ModelName = Model;
         newProduct.PurchaseDate = PurchaseDate;
         newProduct.Price = PricePaid;
-        newProduct.Category = category;
-        newProduct.Office = office;
+        newProduct.CategoryId = assetCategory.CategoryId;
+        newProduct.OfficeId = assetOffice.OfficeId;
 
         assetsList.Add(newProduct);
+        _storage.SaveAsset(newProduct);
 
         ConsoleHelpers.WriteColoredText(ConsoleColor.Green, "Product added succesfully!\n");
         Console.WriteLine("Press any key to go back to main menu");
