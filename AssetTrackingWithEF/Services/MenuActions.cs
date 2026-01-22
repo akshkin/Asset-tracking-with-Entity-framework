@@ -126,27 +126,26 @@ public static class MenuActions
         }
     }
 
-    //public static int GetAssetId(List<Asset> assetsList, Asset selectedAsset)
-    //{
-    //    Asset asset = assetsList.FirstOrDefault(a => a.AssetId == selectedAsset.AssetId);
-
-    //    return asset.AssetId;
-    //}
-
-    public static void DeleteAsset(List<Asset> assetsList)
+ 
+    public static void DeleteAsset()
     {
+        var assetsList = _storage.LoadAssets();
         Console.WriteLine("Which asset do you want to edit? Use arrow keys to navigate up and dowm");
 
         Asset selectedAsset = ConsoleHelpers.RenderAndSelectFromList(assetsList, ConsoleHelpers.RenderAssets);
 
         if (selectedAsset != null) 
         {
-            Console.WriteLine("Are you sure you want to delete this asset? Type 'y' for yes and 'n' for no");
+            Console.WriteLine();
+            ConsoleHelpers.WriteColoredText(ConsoleColor.Red, "Are you sure you want to delete this asset? Type 'y' for yes and 'n' for no");
             var key = Console.ReadKey().Key;
             if (key == ConsoleKey.Y)
             {
-                assetsList.Remove(selectedAsset);
+                _storage.DeleteAsset(selectedAsset);
+                Console.WriteLine();
                 ConsoleHelpers.WriteColoredText(ConsoleColor.Green, "Successfully deleted asset");
+                Console.WriteLine("Press any key to go back to main menu");
+                Console.ReadKey();
             }
             else if (key == ConsoleKey.N) 
             {

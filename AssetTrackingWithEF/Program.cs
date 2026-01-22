@@ -19,7 +19,7 @@ while (!hasQuit)
 
     string choice = Console.ReadLine();
     Console.Clear();
-    hasQuit = MenuManager.HandleChoice(choice, assetsList);
+    hasQuit = MenuManager.HandleChoice(choice);
 }
 
 if (assetsList.Count > 0)
