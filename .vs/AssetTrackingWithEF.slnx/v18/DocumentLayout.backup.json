@@ -14,24 +14,24 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "AssetStorage.cs",
               "DocumentMoniker": "C:\\Users\\aksh\\Documents\\lexicon\\c-sharp\\AssetTrackingWithEF\\AssetTrackingWithEF\\Services\\AssetStorage.cs",
               "RelativeDocumentMoniker": "AssetTrackingWithEF\\Services\\AssetStorage.cs",
-              "ToolTip": "C:\\Users\\aksh\\Documents\\lexicon\\c-sharp\\AssetTrackingWithEF\\AssetTrackingWithEF\\Services\\AssetStorage.cs*",
-              "RelativeToolTip": "AssetTrackingWithEF\\Services\\AssetStorage.cs*",
+              "ToolTip": "C:\\Users\\aksh\\Documents\\lexicon\\c-sharp\\AssetTrackingWithEF\\AssetTrackingWithEF\\Services\\AssetStorage.cs",
+              "RelativeToolTip": "AssetTrackingWithEF\\Services\\AssetStorage.cs",
               "ViewState": "AgIAAAMAAAAAAAAAAAAAAAYAAAAmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-01-22T13:26:54.51Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
             }
           ]
         }
