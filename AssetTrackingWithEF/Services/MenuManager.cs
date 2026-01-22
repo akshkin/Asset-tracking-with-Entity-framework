@@ -33,12 +33,12 @@ internal class MenuManager
 
             case "2":
                 ShowHeader("Add a new asset");
-                MenuActions.AddAsset(assetsList);
+                MenuActions.AddAsset();
                 return false;
 
             case "3":
                 ShowHeader("Edit an asset");
-                MenuActions.EditAsset(assetsList);
+                MenuActions.EditAsset();
                 return false;
 
             case "4":

@@ -31,6 +31,26 @@ namespace AssetTrackingWithEF.Services
             context.SaveChanges();
         }
 
+        public void UpdateAsset(Asset updatedAsset)
+        {
+            using var context = new MyDbContext();
+
+            var existing = context.Assets
+                .FirstOrDefault(a => a.AssetId == updatedAsset.AssetId);
+
+            if (existing == null)
+                return;
+
+            existing.Brand = updatedAsset.Brand;
+            existing.ModelName = updatedAsset.ModelName;
+            existing.Price = updatedAsset.Price;
+            existing.PurchaseDate = updatedAsset.PurchaseDate;
+            existing.CategoryId = updatedAsset.CategoryId;
+            existing.OfficeId = updatedAsset.OfficeId;
+
+            context.SaveChanges();
+        }
+
         public void DeleteAsset(Asset asset) 
         {
             using var context = new MyDbContext();

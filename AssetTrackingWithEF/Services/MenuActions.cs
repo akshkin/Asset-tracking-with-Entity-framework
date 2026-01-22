@@ -23,7 +23,7 @@ public static class MenuActions
         Console.WriteLine();
     }
 
-    public static void AddAsset(List<Asset> assetsList)
+    public static void AddAsset()
     {
         Console.WriteLine(@"Enter product type - 'Computer' or 'Phone' :  ", "Product Type");
 
@@ -55,7 +55,6 @@ public static class MenuActions
         newProduct.CategoryId = assetCategory.CategoryId;
         newProduct.OfficeId = assetOffice.OfficeId;
 
-        assetsList.Add(newProduct);
         _storage.SaveAsset(newProduct);
 
         ConsoleHelpers.WriteColoredText(ConsoleColor.Green, "Product added succesfully!\n");
@@ -63,8 +62,10 @@ public static class MenuActions
         Console.ReadKey();
     }
 
-    public static void EditAsset(List<Asset> assetsList)
+    public static void EditAsset()
     {
+        var assetsList = _storage.LoadAssets();
+
         if (assetsList.Count == 0)
         {
             Console.WriteLine("No assets added yet");
@@ -115,6 +116,8 @@ public static class MenuActions
                     double price = Validators.ValidateDouble("Enter new price in USD: ");
                     selectedAsset.Price = price;            
                 }
+
+                _storage.UpdateAsset(selectedAsset);
 
                 ConsoleHelpers.WriteColoredText(ConsoleColor.Green, "Successfully saved changes");
                 Console.WriteLine("Press any key to go back to main menu");
