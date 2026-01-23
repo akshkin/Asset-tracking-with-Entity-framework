@@ -24,7 +24,8 @@ public static class MenuActions
 
     public static void AddAsset()
     {
-        Console.WriteLine(@"Enter product type - 'Computer' or 'Phone' :  ", "Product Type");
+        Console.WriteLine("Choose product category: ");
+        Console.WriteLine();
 
         var categories = _storage.GetCategories();
         var categoryNames = categories.Select(c => c.CategoryName).ToList();
@@ -34,13 +35,20 @@ public static class MenuActions
 
         string selectedCategory = ConsoleHelpers.RenderAndSelectFromList(categoryNames, ConsoleHelpers.RenderList);
 
+        Console.WriteLine();
         string Brand = Validators.ValidateInput("Enter brand of the product : ", "Brand");
+
+        Console.WriteLine();
         string Model = Validators.ValidateInput("Enter product model : ", "Model");
 
+        Console.WriteLine();
+        Console.WriteLine("Choose office: ");
         string selectedOffice = ConsoleHelpers.RenderAndSelectFromList(officeLocations, ConsoleHelpers.RenderList);
 
+        Console.WriteLine();
         DateTime PurchaseDate = Validators.ValidateDate("Enter purchase date in format YYYY-MM-DD : ");
 
+        Console.WriteLine();
         double PricePaid = Validators.ValidateDouble("Enter price in USD for the product : ");
 
         var assetCategory = categories.First(c => c.CategoryName == selectedCategory);

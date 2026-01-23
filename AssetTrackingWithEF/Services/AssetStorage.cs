@@ -8,7 +8,7 @@ namespace AssetTrackingWithEF.Services
         public List<Asset> LoadAssets(string sortBy= null)
         {
             using var context = new MyDbContext();
-            //var assets = context.Assets.Include(a => a.Category).Include(a => a.Office).ToList();
+
             var query = context.Assets.Include(a => a.Category).Include(a => a.Office).AsQueryable();
             return sortBy switch
             {
