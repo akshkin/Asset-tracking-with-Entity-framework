@@ -1,4 +1,6 @@
-﻿namespace AssetTrackingWithEF.Helpers;
+﻿using AssetTrackingWithEF.Models;
+
+namespace AssetTrackingWithEF.Helpers;
 
 public static class Validators
 {
@@ -57,4 +59,19 @@ public static class Validators
             }
         }
     }
+
+    public static ExpiryStatus GetExpiryStatus(Asset asset)
+    {
+        var expiryDate = asset.PurchaseDate.AddYears(3);
+        var today = DateTime.Today;
+
+        if (expiryDate <= today.AddMonths(3) && expiryDate >= today)
+            return ExpiryStatus.ThreeMonths;
+
+        if (expiryDate <= today.AddMonths(6) && expiryDate >= today)
+            return ExpiryStatus.SixMonths;
+
+        return ExpiryStatus.None;
+    }
+
 }
