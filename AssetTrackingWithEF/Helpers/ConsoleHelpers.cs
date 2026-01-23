@@ -130,5 +130,20 @@ public static class ConsoleHelpers
                 Console.ResetColor();
             }
         }
+
+        var officesWithTotalValue = Validators.GetTotalAssetValue(assetsList);
+
+        Console.WriteLine();
+        Console.WriteLine("===============================");
+        Console.WriteLine("TOTAL ASSETS VALUE PER OFFICE:");
+        Console.WriteLine("===============================");
+
+        Console.WriteLine();
+
+        foreach( var office in officesWithTotalValue)
+        {
+            Console.WriteLine($"{office.office.OfficeLocation}: {office.totalValue} {office.office.CurrencyCode}");
+        }
+        Console.WriteLine();
     }
 }

@@ -81,4 +81,12 @@ public static class Validators
         return priceString;
     }
 
+    public static IEnumerable<(Office office, decimal totalValue)> GetTotalAssetValue(List<Asset> assetsList)
+    {
+        return assetsList.GroupBy(a => a.Office).Select(officeGroup => ( 
+            office: officeGroup.Key,
+            totalValue: officeGroup.Sum(a => (decimal)a.Price * a.Office.ConversionRateFromUSD)        
+        ));
+    }
+
 }
