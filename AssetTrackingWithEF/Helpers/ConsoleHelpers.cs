@@ -71,7 +71,7 @@ public static class ConsoleHelpers
             var asset = assetsList[i];
 
             HighlightExpiry(asset);
-            var status = Validators.GetExpiryStatus(asset);
+            var status = Calculations.GetExpiryStatus(asset);
 
             string statusText = status == ExpiryStatus.ThreeMonths ? "<3 months" : status == ExpiryStatus.SixMonths ? "<6 months" : "---";
 
@@ -81,7 +81,7 @@ public static class ConsoleHelpers
                 Console.ForegroundColor = ConsoleColor.Black;
             }
 
-            string priceString = Validators.GetConvertedPriceToLocalCurrency(asset);
+            string priceString = Calculations.GetConvertedPriceToLocalCurrency(asset);
 
             Console.WriteLine($"{asset.AssetId,-4}{asset.Category.CategoryName,-15}{asset.Brand,-15}{asset.ModelName,-15}{priceString,-18}{asset.PurchaseDate.ToShortDateString(),-15}{asset.Office.OfficeLocation, -12}{statusText, -15}");
             Console.ResetColor();
@@ -108,7 +108,7 @@ public static class ConsoleHelpers
 
     public static void HighlightExpiry(Asset asset)
     {
-        var status = Validators.GetExpiryStatus(asset);
+        var status = Calculations.GetExpiryStatus(asset);
 
         if (status == ExpiryStatus.ThreeMonths)
             Console.ForegroundColor = ConsoleColor.Red;
@@ -130,13 +130,13 @@ public static class ConsoleHelpers
             foreach(var asset in office)
             {
                 HighlightExpiry(asset);
-                string priceString = Validators.GetConvertedPriceToLocalCurrency(asset);
+                string priceString = Calculations.GetConvertedPriceToLocalCurrency(asset);
                 Console.WriteLine($"   {asset.AssetId,-4}{asset.Category.CategoryName,-12}{asset.Brand,-15}{asset.ModelName,-15}{priceString,-18}{asset.PurchaseDate.ToShortDateString(),-15}");
                 Console.ResetColor();
             }
         }
 
-        var officesWithTotalValue = Validators.GetTotalAssetValue(assetsList);
+        var officesWithTotalValue = Calculations.GetTotalAssetValue(assetsList);
 
         Console.WriteLine();
         Console.WriteLine("===============================");
