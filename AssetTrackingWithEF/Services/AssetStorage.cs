@@ -19,8 +19,6 @@ namespace AssetTrackingWithEF.Services
                 "office" => query.OrderBy(a => a.Office.OfficeLocation).ToList(),
                 _ => query.ToList(),
             };
-
-            //return assets;
         }
 
         public List<Category> GetCategories()

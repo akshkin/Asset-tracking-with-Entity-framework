@@ -26,16 +26,7 @@ internal class MenuManager
         {
             case "1":
                 ShowHeader("All your assets");
-                Console.WriteLine("How do want to sort your assets?");
-               
-                var options = new List<string> { "Id", "Brand", "Category", "Date", "Office" };
-                string selectedOption = ConsoleHelpers.RenderAndSelectFromList(options, ConsoleHelpers.RenderList);
-
-                Console.WriteLine();
-                Console.WriteLine($"Here are your sorted assets by {selectedOption}");
-                Console.WriteLine();
-
-                MenuActions.ShowAssetsTable(selectedOption.ToLower());
+                ConsoleHelpers.RenderSortOptionsAndShowTable();
                 Console.WriteLine("Press any key to go back to main menu");
                 Console.ReadKey();
                 return false;
