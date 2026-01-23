@@ -20,30 +20,30 @@ internal class MenuManager
         Console.WriteLine("(5) Save and Quit");
     }
 
-    public static bool HandleChoice(string choice, List<Asset> assetsList)
+    public static bool HandleChoice(string choice)
     {
         switch (choice)
         {
             case "1":
                 ShowHeader("All your assets");
-                MenuActions.ShowAssetsTable(assetsList);
+                MenuActions.ShowAssetsTable();
                 Console.WriteLine("Press any key to go back to main menu");
                 Console.ReadKey();
                 return false;
 
             case "2":
                 ShowHeader("Add a new asset");
-                MenuActions.AddAsset(assetsList);
+                MenuActions.AddAsset();
                 return false;
 
             case "3":
                 ShowHeader("Edit an asset");
-                MenuActions.EditAsset(assetsList);
+                MenuActions.EditAsset();
                 return false;
 
             case "4":
                 ShowHeader("Delete an asset");
-                MenuActions.DeleteAsset(assetsList);
+                MenuActions.DeleteAsset();
                 return false;
 
             case "5":

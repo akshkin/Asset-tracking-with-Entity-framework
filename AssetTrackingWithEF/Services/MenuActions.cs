@@ -5,8 +5,12 @@ namespace AssetTrackingWithEF.Services;
 
 public static class MenuActions
 {
-    public static void ShowAssetsTable(List<Asset> assetsList, int index = -1)
+    private static readonly AssetStorage _storage = new AssetStorage();
+    public static void ShowAssetsTable(int index = -1)
     {
+        var assetsList = _storage.LoadAssets();
+        var categories = _storage.GetCategories();
+
         if (assetsList.Count == 0)
         {
             Console.WriteLine("No assets yet");
@@ -15,63 +19,53 @@ public static class MenuActions
         Console.WriteLine();
         Console.WriteLine($"{"No.",-4}{"Category",-25}{"Brand",-15}{"Model",-15}{"Price",-10}{"Due Date",-10}");
 
-        for (int i = 0; i < assetsList.Count; i++)
-        {
-            var asset = assetsList[i];
-            if (i == index)
-            {
-                Console.BackgroundColor = ConsoleColor.DarkCyan;
-                Console.ForegroundColor = ConsoleColor.Black;
-            }
-
-            Console.WriteLine($"{asset.AssetId,-4}{asset.Category.CategoryName,-25}{asset.Brand,-15}{asset.ModelName,-15}{asset.Price,-10}{asset.PurchaseDate,-10}");
-            Console.ResetColor();
-        }
+        ConsoleHelpers.RenderAssets(assetsList, -1);
         Console.WriteLine();
     }
 
-    public static void AddAsset(List<Asset> assetsList)
+    public static void AddAsset()
     {
         Console.WriteLine(@"Enter product type - 'Computer' or 'Phone' :  ", "Product Type");
-        var categories = new List<string> { "Computer", "Mobile" };
 
-        string selectedCategory = ConsoleHelpers.RenderAndSelectFromList(categories, ConsoleHelpers.RenderList);
-        Category category = new Category();
+        var categories = _storage.GetCategories();
+        var categoryNames = categories.Select(c => c.CategoryName).ToList();
 
-        category.CategoryName = selectedCategory;
+        var offices = _storage.GetOfficeLocations();
+        var officeLocations = offices.Select(o => o.OfficeLocation).ToList();
+
+        string selectedCategory = ConsoleHelpers.RenderAndSelectFromList(categoryNames, ConsoleHelpers.RenderList);
 
         string Brand = Validators.ValidateInput("Enter brand of the product : ", "Brand");
         string Model = Validators.ValidateInput("Enter product model : ", "Model");
 
-
-        var offices = new List<string> { "New York", "London", "Tokyo" };
-        string officeLocation = ConsoleHelpers.RenderAndSelectFromList(offices, ConsoleHelpers.RenderList);
-
-        Office office = new Office();
-
-        office.OfficeLocation = officeLocation;
+        string selectedOffice = ConsoleHelpers.RenderAndSelectFromList(officeLocations, ConsoleHelpers.RenderList);
 
         DateTime PurchaseDate = Validators.ValidateDate("Enter purchase date in format YYYY-MM-DD : ");
 
         double PricePaid = Validators.ValidateDouble("Enter price in USD for the product : ");
+
+        var assetCategory = categories.First(c => c.CategoryName == selectedCategory);
+        var assetOffice = offices.First(o => o.OfficeLocation == selectedOffice);
 
         Asset newProduct = new Asset();
         newProduct.Brand = Brand;
         newProduct.ModelName = Model;
         newProduct.PurchaseDate = PurchaseDate;
         newProduct.Price = PricePaid;
-        newProduct.Category = category;
-        newProduct.Office = office;
+        newProduct.CategoryId = assetCategory.CategoryId;
+        newProduct.OfficeId = assetOffice.OfficeId;
 
-        assetsList.Add(newProduct);
+        _storage.SaveAsset(newProduct);
 
         ConsoleHelpers.WriteColoredText(ConsoleColor.Green, "Product added succesfully!\n");
         Console.WriteLine("Press any key to go back to main menu");
         Console.ReadKey();
     }
 
-    public static void EditAsset(List<Asset> assetsList)
+    public static void EditAsset()
     {
+        var assetsList = _storage.LoadAssets();
+
         if (assetsList.Count == 0)
         {
             Console.WriteLine("No assets added yet");
@@ -80,8 +74,9 @@ public static class MenuActions
         {
             Console.WriteLine("Which asset do you want to edit? Use arrow keys to navigate up and dowm");
 
-            Asset selectedAsset = ConsoleHelpers.RenderAndSelectFromList(assetsList, MenuActions.ShowAssetsTable);
-                
+            Asset selectedAsset = ConsoleHelpers.RenderAndSelectFromList(assetsList, ConsoleHelpers.RenderAssets);
+
+
             if (selectedAsset != null)
             {
                 Console.WriteLine("What would you like to edit? Press 'Enter' to keep the previous value");
@@ -122,6 +117,8 @@ public static class MenuActions
                     selectedAsset.Price = price;            
                 }
 
+                _storage.UpdateAsset(selectedAsset);
+
                 ConsoleHelpers.WriteColoredText(ConsoleColor.Green, "Successfully saved changes");
                 Console.WriteLine("Press any key to go back to main menu");
                 Console.ReadKey();
@@ -129,27 +126,26 @@ public static class MenuActions
         }
     }
 
-    //public static int GetAssetId(List<Asset> assetsList, Asset selectedAsset)
-    //{
-    //    Asset asset = assetsList.FirstOrDefault(a => a.AssetId == selectedAsset.AssetId);
-
-    //    return asset.AssetId;
-    //}
-
-    public static void DeleteAsset(List<Asset> assetsList)
+ 
+    public static void DeleteAsset()
     {
+        var assetsList = _storage.LoadAssets();
         Console.WriteLine("Which asset do you want to edit? Use arrow keys to navigate up and dowm");
 
-        Asset selectedAsset = ConsoleHelpers.RenderAndSelectFromList(assetsList, MenuActions.ShowAssetsTable);
+        Asset selectedAsset = ConsoleHelpers.RenderAndSelectFromList(assetsList, ConsoleHelpers.RenderAssets);
 
         if (selectedAsset != null) 
         {
-            Console.WriteLine("Are you sure you want to delete this asset? Type 'y' for yes and 'n' for no");
+            Console.WriteLine();
+            ConsoleHelpers.WriteColoredText(ConsoleColor.Red, "Are you sure you want to delete this asset? Type 'y' for yes and 'n' for no");
             var key = Console.ReadKey().Key;
             if (key == ConsoleKey.Y)
             {
-                assetsList.Remove(selectedAsset);
+                _storage.DeleteAsset(selectedAsset);
+                Console.WriteLine();
                 ConsoleHelpers.WriteColoredText(ConsoleColor.Green, "Successfully deleted asset");
+                Console.WriteLine("Press any key to go back to main menu");
+                Console.ReadKey();
             }
             else if (key == ConsoleKey.N) 
             {
@@ -158,34 +154,33 @@ public static class MenuActions
         };
     }
 
-    public static void AddDemoData(List<Asset> assetsList)
-{
+    public static void AddDemoData()
+    {
+        var categories = _storage.GetCategories();
+        var offices = _storage.GetOfficeLocations();
+        var assets = _storage.LoadAssets();
+
         Asset newProduct1 = new Asset();
-        Category category = new Category();
-        category.CategoryName = "Laptop";
-        Office office = new Office();
-        office.OfficeLocation = "New York";
         newProduct1.Brand = "Apple";
         newProduct1.ModelName = "Macbook pro";
         newProduct1.PurchaseDate = new DateTime(2025,12,10);
         newProduct1.Price = 3000.00;
-        newProduct1.Category = category;
-        newProduct1.Office = office;
-
-        assetsList.Add(newProduct1);
+        newProduct1.CategoryId = categories.FirstOrDefault(c => c.CategoryName == "Laptop").CategoryId;
+        newProduct1.OfficeId = offices.FirstOrDefault(o => o.OfficeLocation == "New York").OfficeId;
 
         Asset newProduct2 = new Asset();
-        Category category2 = new Category();
-        category2.CategoryName = "Phone";
-        Office office2 = new Office();
-        office.OfficeLocation = "London";
         newProduct2.Brand = "Apple";
         newProduct2.ModelName = "iPhone 13";
         newProduct2.PurchaseDate = new DateTime(2025,12,10);
         newProduct2.Price = 2000.00;
-        newProduct2.Category = category2;
-        newProduct2.Office = office;
+        newProduct2.CategoryId = categories.FirstOrDefault(c => c.CategoryName == "Phone").CategoryId;
+        newProduct2.OfficeId = offices.FirstOrDefault(o => o.OfficeLocation == "London").OfficeId;
 
-        assetsList.Add(newProduct2);
+
+        if (assets.Count == 0)
+        {
+            _storage.SaveAsset(newProduct1);
+            _storage.SaveAsset(newProduct2);
+        }
     }
 }
