@@ -27,8 +27,8 @@ internal class MenuManager
             case "1":
                 ShowHeader("All your assets");
                 ConsoleHelpers.RenderSortOptionsAndShowTable();
-                Console.WriteLine("Press any key to go back to main menu");
-                Console.ReadKey();
+                //Console.WriteLine("Press any key to go back to main menu");
+                //Console.ReadKey();
                 return false;
 
             case "2":
@@ -59,6 +59,8 @@ internal class MenuManager
 
             default:
                 ConsoleHelpers.WriteColoredText(ConsoleColor.Red, "Invalid option");
+                Console.WriteLine();
+                Console.WriteLine("Press any key to go back to main menu");
                 Console.ReadKey();
                 return false;
         }

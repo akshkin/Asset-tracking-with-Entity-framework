@@ -17,6 +17,7 @@ public static class ConsoleHelpers
     public static T RenderAndSelectFromList<T>(List<T> list, Action<List<T>, int> renderMethod)
     {
         Console.WriteLine("Use arrow keys to select");
+        Console.WriteLine();
         int index = 0;
         int startTop = Console.CursorTop;
 
@@ -94,11 +95,16 @@ public static class ConsoleHelpers
         var options = new List<string> { "Id", "Brand", "Category", "Date", "Office" };
         string selectedOption = ConsoleHelpers.RenderAndSelectFromList(options, ConsoleHelpers.RenderList);
 
-        Console.WriteLine();
-        Console.WriteLine($"Here are your sorted assets by {selectedOption}");
-        Console.WriteLine();
+        if (selectedOption != null)
+        {
+            Console.WriteLine();
+            Console.WriteLine($"Here are your sorted assets by {selectedOption}");
 
-        MenuActions.ShowAssetsTable(selectedOption.ToLower());
+            MenuActions.ShowAssetsTable(selectedOption.ToLower());
+
+            Console.WriteLine("Press any key to go back to main menu");
+            Console.ReadKey();
+        }
     }
 
     public static void HighlightExpiry(Asset asset)

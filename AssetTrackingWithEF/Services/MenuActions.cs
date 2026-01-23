@@ -16,7 +16,7 @@ public static class MenuActions
             Console.WriteLine("No assets yet");
         }
 
-        Console.WriteLine();
+        Console.WriteLine();       
        
         ConsoleHelpers.RenderAssets(assetsList, -1);
         Console.WriteLine();

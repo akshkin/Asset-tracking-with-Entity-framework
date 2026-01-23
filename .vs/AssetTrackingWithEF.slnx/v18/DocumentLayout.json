@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\Users\\aksh\\Documents\\lexicon\\c-sharp\\AssetTrackingWithEF\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{09E08F29-260D-B29D-C609-7F618BC6634E}|AssetTrackingWithEF\\AssetTrackingWithEF.csproj|c:\\users\\aksh\\documents\\lexicon\\c-sharp\\assettrackingwithef\\assettrackingwithef\\helpers\\consolehelpers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{09E08F29-260D-B29D-C609-7F618BC6634E}|AssetTrackingWithEF\\AssetTrackingWithEF.csproj|solutionrelative:assettrackingwithef\\helpers\\consolehelpers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{09E08F29-260D-B29D-C609-7F618BC6634E}|AssetTrackingWithEF\\AssetTrackingWithEF.csproj|c:\\users\\aksh\\documents\\lexicon\\c-sharp\\assettrackingwithef\\assettrackingwithef\\services\\menuactions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{09E08F29-260D-B29D-C609-7F618BC6634E}|AssetTrackingWithEF\\AssetTrackingWithEF.csproj|solutionrelative:assettrackingwithef\\services\\menuactions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -11,24 +15,20 @@
       "RelativeMoniker": "D:0:0:{09E08F29-260D-B29D-C609-7F618BC6634E}|AssetTrackingWithEF\\AssetTrackingWithEF.csproj|solutionrelative:assettrackingwithef\\services\\menumanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{09E08F29-260D-B29D-C609-7F618BC6634E}|AssetTrackingWithEF\\AssetTrackingWithEF.csproj|c:\\users\\aksh\\documents\\lexicon\\c-sharp\\assettrackingwithef\\assettrackingwithef\\helpers\\loading.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{09E08F29-260D-B29D-C609-7F618BC6634E}|AssetTrackingWithEF\\AssetTrackingWithEF.csproj|solutionrelative:assettrackingwithef\\helpers\\loading.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{09E08F29-260D-B29D-C609-7F618BC6634E}|AssetTrackingWithEF\\AssetTrackingWithEF.csproj|c:\\users\\aksh\\documents\\lexicon\\c-sharp\\assettrackingwithef\\assettrackingwithef\\services\\assetstorage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{09E08F29-260D-B29D-C609-7F618BC6634E}|AssetTrackingWithEF\\AssetTrackingWithEF.csproj|solutionrelative:assettrackingwithef\\services\\assetstorage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{09E08F29-260D-B29D-C609-7F618BC6634E}|AssetTrackingWithEF\\AssetTrackingWithEF.csproj|c:\\users\\aksh\\documents\\lexicon\\c-sharp\\assettrackingwithef\\assettrackingwithef\\helpers\\validators.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{09E08F29-260D-B29D-C609-7F618BC6634E}|AssetTrackingWithEF\\AssetTrackingWithEF.csproj|solutionrelative:assettrackingwithef\\helpers\\validators.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{09E08F29-260D-B29D-C609-7F618BC6634E}|AssetTrackingWithEF\\AssetTrackingWithEF.csproj|c:\\users\\aksh\\documents\\lexicon\\c-sharp\\assettrackingwithef\\assettrackingwithef\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{09E08F29-260D-B29D-C609-7F618BC6634E}|AssetTrackingWithEF\\AssetTrackingWithEF.csproj|solutionrelative:assettrackingwithef\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{09E08F29-260D-B29D-C609-7F618BC6634E}|AssetTrackingWithEF\\AssetTrackingWithEF.csproj|c:\\users\\aksh\\documents\\lexicon\\c-sharp\\assettrackingwithef\\assettrackingwithef\\helpers\\consolehelpers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{09E08F29-260D-B29D-C609-7F618BC6634E}|AssetTrackingWithEF\\AssetTrackingWithEF.csproj|solutionrelative:assettrackingwithef\\helpers\\consolehelpers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{09E08F29-260D-B29D-C609-7F618BC6634E}|AssetTrackingWithEF\\AssetTrackingWithEF.csproj|c:\\users\\aksh\\documents\\lexicon\\c-sharp\\assettrackingwithef\\assettrackingwithef\\helpers\\loading.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{09E08F29-260D-B29D-C609-7F618BC6634E}|AssetTrackingWithEF\\AssetTrackingWithEF.csproj|solutionrelative:assettrackingwithef\\helpers\\loading.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{09E08F29-260D-B29D-C609-7F618BC6634E}|AssetTrackingWithEF\\AssetTrackingWithEF.csproj|c:\\users\\aksh\\documents\\lexicon\\c-sharp\\assettrackingwithef\\assettrackingwithef\\helpers\\validators.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{09E08F29-260D-B29D-C609-7F618BC6634E}|AssetTrackingWithEF\\AssetTrackingWithEF.csproj|solutionrelative:assettrackingwithef\\helpers\\validators.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{09E08F29-260D-B29D-C609-7F618BC6634E}|AssetTrackingWithEF\\AssetTrackingWithEF.csproj|c:\\users\\aksh\\documents\\lexicon\\c-sharp\\assettrackingwithef\\assettrackingwithef\\services\\assetstorage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{09E08F29-260D-B29D-C609-7F618BC6634E}|AssetTrackingWithEF\\AssetTrackingWithEF.csproj|solutionrelative:assettrackingwithef\\services\\assetstorage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -38,7 +38,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -46,28 +46,16 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "MenuManager.cs",
               "DocumentMoniker": "C:\\Users\\aksh\\Documents\\lexicon\\c-sharp\\AssetTrackingWithEF\\AssetTrackingWithEF\\Services\\MenuManager.cs",
               "RelativeDocumentMoniker": "AssetTrackingWithEF\\Services\\MenuManager.cs",
               "ToolTip": "C:\\Users\\aksh\\Documents\\lexicon\\c-sharp\\AssetTrackingWithEF\\AssetTrackingWithEF\\Services\\MenuManager.cs",
               "RelativeToolTip": "AssetTrackingWithEF\\Services\\MenuManager.cs",
-              "ViewState": "AgIAACYAAAAAAAAAAAAgwA4AAAAuAAAAAAAAAA==",
+              "ViewState": "AgIAABUAAAAAAAAAAAAYwBkAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-01-23T12:15:18.694Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Loading.cs",
-              "DocumentMoniker": "C:\\Users\\aksh\\Documents\\lexicon\\c-sharp\\AssetTrackingWithEF\\AssetTrackingWithEF\\Helpers\\Loading.cs",
-              "RelativeDocumentMoniker": "AssetTrackingWithEF\\Helpers\\Loading.cs",
-              "ToolTip": "C:\\Users\\aksh\\Documents\\lexicon\\c-sharp\\AssetTrackingWithEF\\AssetTrackingWithEF\\Helpers\\Loading.cs",
-              "RelativeToolTip": "AssetTrackingWithEF\\Helpers\\Loading.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-23T11:54:44.405Z"
             },
             {
               "$type": "Document",
@@ -79,36 +67,38 @@
               "RelativeToolTip": "AssetTrackingWithEF\\Program.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-23T11:43:51.511Z"
+              "WhenOpened": "2026-01-23T11:43:51.511Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 0,
               "Title": "ConsoleHelpers.cs",
               "DocumentMoniker": "C:\\Users\\aksh\\Documents\\lexicon\\c-sharp\\AssetTrackingWithEF\\AssetTrackingWithEF\\Helpers\\ConsoleHelpers.cs",
               "RelativeDocumentMoniker": "AssetTrackingWithEF\\Helpers\\ConsoleHelpers.cs",
               "ToolTip": "C:\\Users\\aksh\\Documents\\lexicon\\c-sharp\\AssetTrackingWithEF\\AssetTrackingWithEF\\Helpers\\ConsoleHelpers.cs",
               "RelativeToolTip": "AssetTrackingWithEF\\Helpers\\ConsoleHelpers.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAIoAAAA6AAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAGUAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-23T07:47:59.47Z"
+              "WhenOpened": "2026-01-23T07:47:59.47Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "MenuActions.cs",
               "DocumentMoniker": "C:\\Users\\aksh\\Documents\\lexicon\\c-sharp\\AssetTrackingWithEF\\AssetTrackingWithEF\\Services\\MenuActions.cs",
               "RelativeDocumentMoniker": "AssetTrackingWithEF\\Services\\MenuActions.cs",
               "ToolTip": "C:\\Users\\aksh\\Documents\\lexicon\\c-sharp\\AssetTrackingWithEF\\AssetTrackingWithEF\\Services\\MenuActions.cs",
               "RelativeToolTip": "AssetTrackingWithEF\\Services\\MenuActions.cs",
-              "ViewState": "AgIAAJEAAAAAAAAAAAAAwKEAAAAiAAAAAAAAAA==",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAQwBoAAAA3AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-01-22T13:40:49.497Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 6,
               "Title": "AssetStorage.cs",
               "DocumentMoniker": "C:\\Users\\aksh\\Documents\\lexicon\\c-sharp\\AssetTrackingWithEF\\AssetTrackingWithEF\\Services\\AssetStorage.cs",
               "RelativeDocumentMoniker": "AssetTrackingWithEF\\Services\\AssetStorage.cs",
@@ -120,15 +110,28 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 3,
               "Title": "Validators.cs",
               "DocumentMoniker": "C:\\Users\\aksh\\Documents\\lexicon\\c-sharp\\AssetTrackingWithEF\\AssetTrackingWithEF\\Helpers\\Validators.cs",
               "RelativeDocumentMoniker": "AssetTrackingWithEF\\Helpers\\Validators.cs",
               "ToolTip": "C:\\Users\\aksh\\Documents\\lexicon\\c-sharp\\AssetTrackingWithEF\\AssetTrackingWithEF\\Helpers\\Validators.cs",
               "RelativeToolTip": "AssetTrackingWithEF\\Helpers\\Validators.cs",
-              "ViewState": "AgIAAEoAAAAAAAAAAAAAAFEAAAAFAAAAAAAAAA==",
+              "ViewState": "AgIAAEEAAAAAAAAAAAAAAFEAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-23T08:50:43.281Z"
+              "WhenOpened": "2026-01-23T08:50:43.281Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Loading.cs",
+              "DocumentMoniker": "C:\\Users\\aksh\\Documents\\lexicon\\c-sharp\\AssetTrackingWithEF\\AssetTrackingWithEF\\Helpers\\Loading.cs",
+              "RelativeDocumentMoniker": "AssetTrackingWithEF\\Helpers\\Loading.cs",
+              "ToolTip": "C:\\Users\\aksh\\Documents\\lexicon\\c-sharp\\AssetTrackingWithEF\\AssetTrackingWithEF\\Helpers\\Loading.cs",
+              "RelativeToolTip": "AssetTrackingWithEF\\Helpers\\Loading.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-23T11:54:44.405Z"
             }
           ]
         }
