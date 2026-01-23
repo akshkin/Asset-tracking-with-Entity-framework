@@ -1,7 +1,6 @@
 ﻿
 using AssetTrackingWithEF.Models;
 using AssetTrackingWithEF.Services;
-using static AssetTrackingWithEF.Helpers.Validators;
 
 namespace AssetTrackingWithEF.Helpers;
 
@@ -64,7 +63,7 @@ public static class ConsoleHelpers
     {
         Console.WriteLine();
         Console.WriteLine($"{"No.",-4}{"Category",-15}{"Brand",-15}{"Model",-15}{"Price",-18}{"Due Date",-15}{"Office",-12}{"Expiry Status",-15}");
-        Console.WriteLine(new String('-', 100));
+        Console.WriteLine(new String('-', 110));
 
         for (int i = 0; i < assetsList.Count; i++)
         {
@@ -84,8 +83,9 @@ public static class ConsoleHelpers
                 Console.ForegroundColor = ConsoleColor.Black;
             }
             decimal convertedPriceToLocalCurrency = (decimal)asset.Price * asset.Office.ConversionRateFromUSD;
+            string priceString = convertedPriceToLocalCurrency + " " + asset.Office.CurrencyCode;
 
-            Console.WriteLine($"{asset.AssetId,-4}{asset.Category.CategoryName,-15}{asset.Brand,-15}{asset.ModelName,-15}{convertedPriceToLocalCurrency + " "  + asset.Office.CurrencyCode,-18}{asset.PurchaseDate.ToShortDateString(),-15}{asset.Office.OfficeLocation, -12}{statusText, -15}");
+            Console.WriteLine($"{asset.AssetId,-4}{asset.Category.CategoryName,-15}{asset.Brand,-15}{asset.ModelName,-15}{priceString,-18}{asset.PurchaseDate.ToShortDateString(),-15}{asset.Office.OfficeLocation, -12}{statusText, -15}");
             Console.ResetColor();
         }
     }
