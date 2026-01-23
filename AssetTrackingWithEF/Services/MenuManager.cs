@@ -26,7 +26,7 @@ internal class MenuManager
         {
             case "1":
                 ShowHeader("All your assets");
-                MenuActions.ShowAssetsTable();
+                ConsoleHelpers.RenderSortOptionsAndShowTable();
                 Console.WriteLine("Press any key to go back to main menu");
                 Console.ReadKey();
                 return false;

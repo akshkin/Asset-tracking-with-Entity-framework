@@ -6,9 +6,9 @@ namespace AssetTrackingWithEF.Services;
 public static class MenuActions
 {
     private static readonly AssetStorage _storage = new AssetStorage();
-    public static void ShowAssetsTable(int index = -1)
+    public static void ShowAssetsTable(string sortBy = null, int index = -1)
     {
-        var assetsList = _storage.LoadAssets();
+        var assetsList = _storage.LoadAssets(sortBy);
         var categories = _storage.GetCategories();
 
         if (assetsList.Count == 0)
@@ -17,7 +17,7 @@ public static class MenuActions
         }
 
         Console.WriteLine();
-        Console.WriteLine($"{"No.",-4}{"Category",-25}{"Brand",-15}{"Model",-15}{"Price",-10}{"Due Date",-10}");
+        Console.WriteLine($"{"No.",-4}{"Category",-15}{"Brand",-15}{"Model",-15}{"Price",-10}{"Due Date",-20}{"Office", -15}");
 
         ConsoleHelpers.RenderAssets(assetsList, -1);
         Console.WriteLine();
@@ -158,7 +158,7 @@ public static class MenuActions
     {
         var categories = _storage.GetCategories();
         var offices = _storage.GetOfficeLocations();
-        var assets = _storage.LoadAssets();
+        var assets = _storage.LoadAssets(null); //sortBy is null
 
         Asset newProduct1 = new Asset();
         newProduct1.Brand = "Apple";

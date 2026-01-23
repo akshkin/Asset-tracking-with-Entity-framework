@@ -1,5 +1,6 @@
 ﻿
 using AssetTrackingWithEF.Models;
+using AssetTrackingWithEF.Services;
 
 namespace AssetTrackingWithEF.Helpers;
 
@@ -69,9 +70,23 @@ public static class ConsoleHelpers
                 Console.ForegroundColor = ConsoleColor.Black;
             }
 
-            Console.WriteLine($"{asset.AssetId,-4}{asset.Category.CategoryName,-25}{asset.Brand,-15}{asset.ModelName,-15}{asset.Price,-10}{asset.PurchaseDate,-10}");
+            Console.WriteLine($"{asset.AssetId,-4}{asset.Category.CategoryName,-15}{asset.Brand,-15}{asset.ModelName,-15}{asset.Price,-10}{asset.PurchaseDate.ToShortDateString(),-20}{asset.Office.OfficeLocation, -15}");
             Console.ResetColor();
         }
+    }
+
+    public static void RenderSortOptionsAndShowTable()
+    {
+        Console.WriteLine("How do want to sort your assets?");
+
+        var options = new List<string> { "Id", "Brand", "Category", "Date", "Office" };
+        string selectedOption = ConsoleHelpers.RenderAndSelectFromList(options, ConsoleHelpers.RenderList);
+
+        Console.WriteLine();
+        Console.WriteLine($"Here are your sorted assets by {selectedOption}");
+        Console.WriteLine();
+
+        MenuActions.ShowAssetsTable(selectedOption.ToLower());
     }
 
 }
