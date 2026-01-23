@@ -68,12 +68,9 @@ public static class ConsoleHelpers
         for (int i = 0; i < assetsList.Count; i++)
         {
             var asset = assetsList[i];
-            var status = Validators.GetExpiryStatus(asset);
 
-            if (status == ExpiryStatus.ThreeMonths)
-                Console.ForegroundColor = ConsoleColor.Red;
-            else if (status == ExpiryStatus.SixMonths)
-                Console.ForegroundColor = ConsoleColor.Yellow;
+            HighlightExpiry(asset);
+            var status = Validators.GetExpiryStatus(asset);
 
             string statusText = status == ExpiryStatus.ThreeMonths ? "<3 months" : status == ExpiryStatus.SixMonths ? "<6 months" : "---";
 
@@ -82,8 +79,8 @@ public static class ConsoleHelpers
                 Console.BackgroundColor = ConsoleColor.DarkCyan;
                 Console.ForegroundColor = ConsoleColor.Black;
             }
-            decimal convertedPriceToLocalCurrency = (decimal)asset.Price * asset.Office.ConversionRateFromUSD;
-            string priceString = convertedPriceToLocalCurrency + " " + asset.Office.CurrencyCode;
+
+            string priceString = Validators.GetConvertedPriceToLocalCurrency(asset);
 
             Console.WriteLine($"{asset.AssetId,-4}{asset.Category.CategoryName,-15}{asset.Brand,-15}{asset.ModelName,-15}{priceString,-18}{asset.PurchaseDate.ToShortDateString(),-15}{asset.Office.OfficeLocation, -12}{statusText, -15}");
             Console.ResetColor();
@@ -104,4 +101,34 @@ public static class ConsoleHelpers
         MenuActions.ShowAssetsTable(selectedOption.ToLower());
     }
 
+    public static void HighlightExpiry(Asset asset)
+    {
+        var status = Validators.GetExpiryStatus(asset);
+
+        if (status == ExpiryStatus.ThreeMonths)
+            Console.ForegroundColor = ConsoleColor.Red;
+        else if (status == ExpiryStatus.SixMonths)
+            Console.ForegroundColor = ConsoleColor.Yellow;
+
+    }
+
+    public static void GenerateReport(List<Asset> assetsList)
+    {
+        var assetsByGroup = assetsList.GroupBy(a => a.Office);
+            
+        foreach(var office in assetsByGroup)
+        {
+            string assetStringPluralOrSingular = office.Count() == 1 ? "asset" : "assets";
+            Console.WriteLine();
+            WriteColoredText(ConsoleColor.Magenta ,$"{office.Key.OfficeLocation} ({office.Count()} {assetStringPluralOrSingular})");
+
+            foreach(var asset in office)
+            {
+                HighlightExpiry(asset);
+                string priceString = Validators.GetConvertedPriceToLocalCurrency(asset);
+                Console.WriteLine($"   {asset.AssetId,-4}{asset.Category.CategoryName,-12}{asset.Brand,-15}{asset.ModelName,-15}{priceString,-18}{asset.PurchaseDate.ToShortDateString(),-15}");
+                Console.ResetColor();
+            }
+        }
+    }
 }

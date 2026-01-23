@@ -1,5 +1,4 @@
 ﻿using AssetTrackingWithEF.Helpers;
-using AssetTrackingWithEF.Models;
 
 namespace AssetTrackingWithEF.Services;
 
@@ -17,7 +16,8 @@ internal class MenuManager
         Console.WriteLine("(2) Add a new Asset");
         Console.WriteLine("(3) Edit an Asset");
         Console.WriteLine("(4) Delete an Asset");
-        Console.WriteLine("(5) Save and Quit");
+        Console.WriteLine("(5) Generate a report of your assets");
+        Console.WriteLine("(6) Save and Quit");
     }
 
     public static bool HandleChoice(string choice)
@@ -47,6 +47,13 @@ internal class MenuManager
                 return false;
 
             case "5":
+                ShowHeader("Report of all your assets");
+                MenuActions.GenerateAssetsReport();
+                Console.WriteLine("Press any key to go back to main menu");
+                Console.ReadKey();
+                return false;
+
+            case "6":
                 Console.WriteLine("All assets saved");
                 return true;
 
