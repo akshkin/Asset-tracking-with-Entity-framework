@@ -16,7 +16,7 @@ public static class MenuActions
             Console.WriteLine("No assets yet");
         }
 
-        Console.WriteLine();
+        Console.WriteLine();       
        
         ConsoleHelpers.RenderAssets(assetsList, -1);
         Console.WriteLine();
@@ -24,7 +24,8 @@ public static class MenuActions
 
     public static void AddAsset()
     {
-        Console.WriteLine(@"Enter product type - 'Computer' or 'Phone' :  ", "Product Type");
+        Console.WriteLine("Choose product category: ");
+        Console.WriteLine();
 
         var categories = _storage.GetCategories();
         var categoryNames = categories.Select(c => c.CategoryName).ToList();
@@ -34,13 +35,20 @@ public static class MenuActions
 
         string selectedCategory = ConsoleHelpers.RenderAndSelectFromList(categoryNames, ConsoleHelpers.RenderList);
 
+        Console.WriteLine();
         string Brand = Validators.ValidateInput("Enter brand of the product : ", "Brand");
+
+        Console.WriteLine();
         string Model = Validators.ValidateInput("Enter product model : ", "Model");
 
+        Console.WriteLine();
+        Console.WriteLine("Choose office: ");
         string selectedOffice = ConsoleHelpers.RenderAndSelectFromList(officeLocations, ConsoleHelpers.RenderList);
 
+        Console.WriteLine();
         DateTime PurchaseDate = Validators.ValidateDate("Enter purchase date in format YYYY-MM-DD : ");
 
+        Console.WriteLine();
         double PricePaid = Validators.ValidateDouble("Enter price in USD for the product : ");
 
         var assetCategory = categories.First(c => c.CategoryName == selectedCategory);
@@ -57,8 +65,7 @@ public static class MenuActions
         _storage.SaveAsset(newProduct);
 
         ConsoleHelpers.WriteColoredText(ConsoleColor.Green, "Product added succesfully!\n");
-        Console.WriteLine("Press any key to go back to main menu");
-        Console.ReadKey();
+        ConsoleHelpers.GoBackToMainMenu();
     }
 
     public static void EditAsset()
@@ -75,34 +82,38 @@ public static class MenuActions
 
             Asset selectedAsset = ConsoleHelpers.RenderAndSelectFromList(assetsList, ConsoleHelpers.RenderAssets);
 
-
             if (selectedAsset != null)
             {
+                Console.WriteLine();
                 Console.WriteLine("What would you like to edit? Press 'Enter' to keep the previous value");
+                Console.WriteLine();
                 Console.WriteLine($"Current Brand is {selectedAsset.Brand}.");
-                Console.Write("New brand (press 'Enter' to keep the same value) : ");
+                Console.Write("New brand: ");
                 string brand = Console.ReadLine();
 
                 if(!string.IsNullOrEmpty(brand)) selectedAsset.Brand = brand;
 
+                Console.WriteLine();
                 Console.WriteLine($"Current Model name is {selectedAsset.ModelName}.");
-                Console.Write("New Model (press 'Enter' to keep the same value) : ");
+                Console.Write("New Model: ");
                 string model = Console.ReadLine();
                 if (!string.IsNullOrEmpty(model)) selectedAsset.ModelName = model;
 
-                Console.WriteLine($"Current Purchase Date is {selectedAsset.PurchaseDate}.");
-                Console.Write("New date: ");
-                string input = Console.ReadLine();
-                if (string.IsNullOrEmpty(input))
+                Console.WriteLine();
+                Console.WriteLine($"Current Purchase Date is {selectedAsset.PurchaseDate.ToShortDateString()}.");
+                Console.WriteLine("Do you want to change the date (y/n)? ");
+                var input = Console.ReadKey(true).Key;
+                if (input == ConsoleKey.N)
                 {
                     selectedAsset.PurchaseDate = selectedAsset.PurchaseDate;
                 }
-                else
+                else if (input == ConsoleKey.Y)
                 {
-                    DateTime PurchaseDate = Validators.ValidateDate("Enter purchase date in format YYYY-MM-DD : ");
+                    DateTime PurchaseDate = Validators.ValidateDate("Enter purchase date in format YYYY-MM-DD: ");
                     selectedAsset.PurchaseDate = PurchaseDate;             
                 }
         
+                Console.WriteLine();
                 Console.WriteLine($"Current Price is {selectedAsset.Price}");
                 Console.Write("New price: ");
                 string newPrice = Console.ReadLine();
@@ -118,9 +129,11 @@ public static class MenuActions
 
                 _storage.UpdateAsset(selectedAsset);
 
+                Console.WriteLine();
                 ConsoleHelpers.WriteColoredText(ConsoleColor.Green, "Successfully saved changes");
-                Console.WriteLine("Press any key to go back to main menu");
-                Console.ReadKey();
+
+                Console.WriteLine();
+                ConsoleHelpers.GoBackToMainMenu();
             }
         }
     }
@@ -137,14 +150,15 @@ public static class MenuActions
         {
             Console.WriteLine();
             ConsoleHelpers.WriteColoredText(ConsoleColor.Red, "Are you sure you want to delete this asset? Type 'y' for yes and 'n' for no");
-            var key = Console.ReadKey().Key;
+            var key = Console.ReadKey(true).Key;
             if (key == ConsoleKey.Y)
             {
                 _storage.DeleteAsset(selectedAsset);
                 Console.WriteLine();
                 ConsoleHelpers.WriteColoredText(ConsoleColor.Green, "Successfully deleted asset");
-                Console.WriteLine("Press any key to go back to main menu");
-                Console.ReadKey();
+
+                Console.WriteLine();
+                ConsoleHelpers.GoBackToMainMenu();
             }
             else if (key == ConsoleKey.N) 
             {
@@ -180,6 +194,8 @@ public static class MenuActions
         {
             _storage.SaveAsset(newProduct1);
             _storage.SaveAsset(newProduct2);
+            ConsoleHelpers.WriteColoredText(ConsoleColor.Green, "Demo data populated");
+            Console.WriteLine();
         }
     }
 

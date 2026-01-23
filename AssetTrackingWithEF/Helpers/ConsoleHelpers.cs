@@ -17,6 +17,7 @@ public static class ConsoleHelpers
     public static T RenderAndSelectFromList<T>(List<T> list, Action<List<T>, int> renderMethod)
     {
         Console.WriteLine("Use arrow keys to select");
+        Console.WriteLine();
         int index = 0;
         int startTop = Console.CursorTop;
 
@@ -70,7 +71,7 @@ public static class ConsoleHelpers
             var asset = assetsList[i];
 
             HighlightExpiry(asset);
-            var status = Validators.GetExpiryStatus(asset);
+            var status = Calculations.GetExpiryStatus(asset);
 
             string statusText = status == ExpiryStatus.ThreeMonths ? "<3 months" : status == ExpiryStatus.SixMonths ? "<6 months" : "---";
 
@@ -80,7 +81,7 @@ public static class ConsoleHelpers
                 Console.ForegroundColor = ConsoleColor.Black;
             }
 
-            string priceString = Validators.GetConvertedPriceToLocalCurrency(asset);
+            string priceString = Calculations.GetConvertedPriceToLocalCurrency(asset);
 
             Console.WriteLine($"{asset.AssetId,-4}{asset.Category.CategoryName,-15}{asset.Brand,-15}{asset.ModelName,-15}{priceString,-18}{asset.PurchaseDate.ToShortDateString(),-15}{asset.Office.OfficeLocation, -12}{statusText, -15}");
             Console.ResetColor();
@@ -94,16 +95,20 @@ public static class ConsoleHelpers
         var options = new List<string> { "Id", "Brand", "Category", "Date", "Office" };
         string selectedOption = ConsoleHelpers.RenderAndSelectFromList(options, ConsoleHelpers.RenderList);
 
-        Console.WriteLine();
-        Console.WriteLine($"Here are your sorted assets by {selectedOption}");
-        Console.WriteLine();
+        if (selectedOption != null)
+        {
+            Console.WriteLine();
+            Console.WriteLine($"Here are your sorted assets by {selectedOption}");
 
-        MenuActions.ShowAssetsTable(selectedOption.ToLower());
+            MenuActions.ShowAssetsTable(selectedOption.ToLower());
+
+            ConsoleHelpers.GoBackToMainMenu();
+        }
     }
 
     public static void HighlightExpiry(Asset asset)
     {
-        var status = Validators.GetExpiryStatus(asset);
+        var status = Calculations.GetExpiryStatus(asset);
 
         if (status == ExpiryStatus.ThreeMonths)
             Console.ForegroundColor = ConsoleColor.Red;
@@ -125,13 +130,13 @@ public static class ConsoleHelpers
             foreach(var asset in office)
             {
                 HighlightExpiry(asset);
-                string priceString = Validators.GetConvertedPriceToLocalCurrency(asset);
+                string priceString = Calculations.GetConvertedPriceToLocalCurrency(asset);
                 Console.WriteLine($"   {asset.AssetId,-4}{asset.Category.CategoryName,-12}{asset.Brand,-15}{asset.ModelName,-15}{priceString,-18}{asset.PurchaseDate.ToShortDateString(),-15}");
                 Console.ResetColor();
             }
         }
 
-        var officesWithTotalValue = Validators.GetTotalAssetValue(assetsList);
+        var officesWithTotalValue = Calculations.GetTotalAssetValue(assetsList);
 
         Console.WriteLine();
         Console.WriteLine("===============================");
@@ -145,5 +150,11 @@ public static class ConsoleHelpers
             Console.WriteLine($"{office.office.OfficeLocation}: {office.totalValue} {office.office.CurrencyCode}");
         }
         Console.WriteLine();
+    }
+
+    public static void GoBackToMainMenu()
+    {
+        Console.WriteLine("Press any key to go back to main menu");
+        Console.ReadKey();
     }
 }

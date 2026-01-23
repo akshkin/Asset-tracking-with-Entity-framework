@@ -12,11 +12,11 @@ internal class MenuManager
     public static void ShowMenu()
     {
         Console.WriteLine("Pick an option:");
-        Console.WriteLine("(1) Show assets list (by category or office)");
+        Console.WriteLine("(1) Show all assets");
         Console.WriteLine("(2) Add a new Asset");
         Console.WriteLine("(3) Edit an Asset");
         Console.WriteLine("(4) Delete an Asset");
-        Console.WriteLine("(5) Generate a report of your assets");
+        Console.WriteLine("(5) Generate a report of all assets");
         Console.WriteLine("(6) Save and Quit");
     }
 
@@ -27,8 +27,6 @@ internal class MenuManager
             case "1":
                 ShowHeader("All your assets");
                 ConsoleHelpers.RenderSortOptionsAndShowTable();
-                Console.WriteLine("Press any key to go back to main menu");
-                Console.ReadKey();
                 return false;
 
             case "2":
@@ -49,8 +47,7 @@ internal class MenuManager
             case "5":
                 ShowHeader("Report of all your assets");
                 MenuActions.GenerateAssetsReport();
-                Console.WriteLine("Press any key to go back to main menu");
-                Console.ReadKey();
+                ConsoleHelpers.GoBackToMainMenu();
                 return false;
 
             case "6":
@@ -59,7 +56,8 @@ internal class MenuManager
 
             default:
                 ConsoleHelpers.WriteColoredText(ConsoleColor.Red, "Invalid option");
-                Console.ReadKey();
+                Console.WriteLine();
+                ConsoleHelpers.GoBackToMainMenu();
                 return false;
         }
     }
