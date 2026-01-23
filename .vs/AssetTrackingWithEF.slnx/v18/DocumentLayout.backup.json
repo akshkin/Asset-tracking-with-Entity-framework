@@ -38,24 +38,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "ExpiryStatus.cs",
-              "DocumentMoniker": "C:\\Users\\aksh\\Documents\\lexicon\\c-sharp\\AssetTrackingWithEF\\AssetTrackingWithEF\\Helpers\\ExpiryStatus.cs",
-              "RelativeDocumentMoniker": "AssetTrackingWithEF\\Helpers\\ExpiryStatus.cs",
-              "ToolTip": "C:\\Users\\aksh\\Documents\\lexicon\\c-sharp\\AssetTrackingWithEF\\AssetTrackingWithEF\\Helpers\\ExpiryStatus.cs",
-              "RelativeToolTip": "AssetTrackingWithEF\\Helpers\\ExpiryStatus.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAANAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-23T09:10:19.168Z",
-              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -67,8 +54,7 @@
               "RelativeToolTip": "AssetTrackingWithEF\\Helpers\\Validators.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAEkAAAAhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-23T08:50:43.281Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-23T08:50:43.281Z"
             },
             {
               "$type": "Document",
@@ -80,8 +66,7 @@
               "RelativeToolTip": "AssetTrackingWithEF\\Services\\AssetStorage.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-23T07:49:14.006Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-23T07:49:14.006Z"
             },
             {
               "$type": "Document",
@@ -91,7 +76,7 @@
               "RelativeDocumentMoniker": "AssetTrackingWithEF\\Helpers\\ConsoleHelpers.cs",
               "ToolTip": "C:\\Users\\aksh\\Documents\\lexicon\\c-sharp\\AssetTrackingWithEF\\AssetTrackingWithEF\\Helpers\\ConsoleHelpers.cs*",
               "RelativeToolTip": "AssetTrackingWithEF\\Helpers\\ConsoleHelpers.cs*",
-              "ViewState": "AgIAADoAAAAAAAAAAAAAwEAAAAB6AAAAAAAAAA==",
+              "ViewState": "AgIAAD8AAAAAAAAAAAAQwFQAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-01-23T07:47:59.47Z",
               "EditorCaption": ""
@@ -104,10 +89,21 @@
               "RelativeDocumentMoniker": "AssetTrackingWithEF\\Services\\MenuActions.cs",
               "ToolTip": "C:\\Users\\aksh\\Documents\\lexicon\\c-sharp\\AssetTrackingWithEF\\AssetTrackingWithEF\\Services\\MenuActions.cs",
               "RelativeToolTip": "AssetTrackingWithEF\\Services\\MenuActions.cs",
-              "ViewState": "AgIAAAQAAAAAAAAAAAAawBMAAAAIAAAAAAAAAA==",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAxwBMAAAAHAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-22T13:40:49.497Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-22T13:40:49.497Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ExpiryStatus.cs",
+              "DocumentMoniker": "C:\\Users\\aksh\\Documents\\lexicon\\c-sharp\\AssetTrackingWithEF\\AssetTrackingWithEF\\Helpers\\ExpiryStatus.cs",
+              "RelativeDocumentMoniker": "AssetTrackingWithEF\\Helpers\\ExpiryStatus.cs",
+              "ToolTip": "C:\\Users\\aksh\\Documents\\lexicon\\c-sharp\\AssetTrackingWithEF\\AssetTrackingWithEF\\Helpers\\ExpiryStatus.cs",
+              "RelativeToolTip": "AssetTrackingWithEF\\Helpers\\ExpiryStatus.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-23T09:10:19.168Z"
             },
             {
               "$type": "Document",
@@ -131,8 +127,7 @@
               "RelativeToolTip": "AssetTrackingWithEF\\Program.cs",
               "ViewState": "AgIAAC0AAAAAAAAAAAAAAD8AAAAwAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-22T14:20:03.039Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-22T14:20:03.039Z"
             }
           ]
         }
