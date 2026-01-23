@@ -74,4 +74,19 @@ public static class Validators
         return ExpiryStatus.None;
     }
 
+    public static string GetConvertedPriceToLocalCurrency(Asset asset)
+    {
+        decimal convertedPriceToLocalCurrency = (decimal)asset.Price * asset.Office.ConversionRateFromUSD;
+        string priceString = convertedPriceToLocalCurrency + " " + asset.Office.CurrencyCode;
+        return priceString;
+    }
+
+    public static IEnumerable<(Office office, decimal totalValue)> GetTotalAssetValue(List<Asset> assetsList)
+    {
+        return assetsList.GroupBy(a => a.Office).Select(officeGroup => ( 
+            office: officeGroup.Key,
+            totalValue: officeGroup.Sum(a => (decimal)a.Price * a.Office.ConversionRateFromUSD)        
+        ));
+    }
+
 }

@@ -182,4 +182,11 @@ public static class MenuActions
             _storage.SaveAsset(newProduct2);
         }
     }
+
+    public static void GenerateAssetsReport()
+    {
+        var assetsList = _storage.LoadAssets();
+
+        ConsoleHelpers.GenerateReport(assetsList);
+    }
 }
