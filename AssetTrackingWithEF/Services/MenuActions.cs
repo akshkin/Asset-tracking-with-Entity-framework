@@ -180,6 +180,8 @@ public static class MenuActions
         {
             _storage.SaveAsset(newProduct1);
             _storage.SaveAsset(newProduct2);
+            ConsoleHelpers.WriteColoredText(ConsoleColor.Green, "Demo data populated");
+            Console.WriteLine();
         }
     }
 
