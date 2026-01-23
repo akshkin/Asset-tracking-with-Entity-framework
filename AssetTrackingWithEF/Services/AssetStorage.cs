@@ -5,11 +5,22 @@ namespace AssetTrackingWithEF.Services
 {
     public class AssetStorage
     {       
-        public List<Asset> LoadAssets()
+        public List<Asset> LoadAssets(string sortBy= null)
         {
             using var context = new MyDbContext();
-            var assets = context.Assets.Include(a => a.Category).Include(a => a.Office).ToList();
-            return assets;
+            //var assets = context.Assets.Include(a => a.Category).Include(a => a.Office).ToList();
+            var query = context.Assets.Include(a => a.Category).Include(a => a.Office).AsQueryable();
+            return sortBy switch
+            {
+                "id" => query.OrderBy(a => a.AssetId).ToList(),
+                "brand" => query.OrderBy(a => a.Brand).ToList(),
+                "category" => query.OrderBy(a => a.Category.CategoryName).ToList(),
+                "date" => query.OrderBy(a => a.PurchaseDate).ToList(),
+                "office" => query.OrderBy(a => a.Office.OfficeLocation).ToList(),
+                _ => query.ToList(),
+            };
+
+            //return assets;
         }
 
         public List<Category> GetCategories()

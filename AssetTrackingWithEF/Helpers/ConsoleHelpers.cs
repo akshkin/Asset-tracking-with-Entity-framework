@@ -69,7 +69,7 @@ public static class ConsoleHelpers
                 Console.ForegroundColor = ConsoleColor.Black;
             }
 
-            Console.WriteLine($"{asset.AssetId,-4}{asset.Category.CategoryName,-25}{asset.Brand,-15}{asset.ModelName,-15}{asset.Price,-10}{asset.PurchaseDate,-10}");
+            Console.WriteLine($"{asset.AssetId,-4}{asset.Category.CategoryName,-15}{asset.Brand,-15}{asset.ModelName,-15}{asset.Price,-10}{asset.PurchaseDate.ToShortDateString(),-20}{asset.Office.OfficeLocation, -15}");
             Console.ResetColor();
         }
     }
