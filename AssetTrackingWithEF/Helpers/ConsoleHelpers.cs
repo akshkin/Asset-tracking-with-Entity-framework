@@ -1,6 +1,7 @@
 ﻿
 using AssetTrackingWithEF.Models;
 using AssetTrackingWithEF.Services;
+using static AssetTrackingWithEF.Helpers.Validators;
 
 namespace AssetTrackingWithEF.Helpers;
 
@@ -61,16 +62,29 @@ public static class ConsoleHelpers
 
     public static void RenderAssets(List<Asset> assetsList, int index)
     {
+        Console.WriteLine();
+        Console.WriteLine($"{"No.",-4}{"Category",-15}{"Brand",-15}{"Model",-15}{"Price",-10}{"Due Date",-15}{"Office",-12}{"Expiry Status",-15}");
+        Console.WriteLine(new String('-', 100));
+
         for (int i = 0; i < assetsList.Count; i++)
         {
             var asset = assetsList[i];
+            var status = Validators.GetExpiryStatus(asset);
+
+            if (status == ExpiryStatus.ThreeMonths)
+                Console.ForegroundColor = ConsoleColor.Red;
+            else if (status == ExpiryStatus.SixMonths)
+                Console.ForegroundColor = ConsoleColor.Yellow;
+
+            string statusText = status == ExpiryStatus.ThreeMonths ? "<3 months" : status == ExpiryStatus.SixMonths ? "<6 months" : "---";
+
             if (i == index)
             {
                 Console.BackgroundColor = ConsoleColor.DarkCyan;
                 Console.ForegroundColor = ConsoleColor.Black;
             }
 
-            Console.WriteLine($"{asset.AssetId,-4}{asset.Category.CategoryName,-15}{asset.Brand,-15}{asset.ModelName,-15}{asset.Price,-10}{asset.PurchaseDate.ToShortDateString(),-20}{asset.Office.OfficeLocation, -15}");
+            Console.WriteLine($"{asset.AssetId,-4}{asset.Category.CategoryName,-15}{asset.Brand,-15}{asset.ModelName,-15}{asset.Price,-10}{asset.PurchaseDate.ToShortDateString(),-15}{asset.Office.OfficeLocation, -12}{statusText, -15}");
             Console.ResetColor();
         }
     }

@@ -17,8 +17,7 @@ public static class MenuActions
         }
 
         Console.WriteLine();
-        Console.WriteLine($"{"No.",-4}{"Category",-15}{"Brand",-15}{"Model",-15}{"Price",-10}{"Due Date",-20}{"Office", -15}");
-
+       
         ConsoleHelpers.RenderAssets(assetsList, -1);
         Console.WriteLine();
     }
