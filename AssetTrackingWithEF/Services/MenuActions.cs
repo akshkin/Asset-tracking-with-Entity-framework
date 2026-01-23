@@ -65,8 +65,7 @@ public static class MenuActions
         _storage.SaveAsset(newProduct);
 
         ConsoleHelpers.WriteColoredText(ConsoleColor.Green, "Product added succesfully!\n");
-        Console.WriteLine("Press any key to go back to main menu");
-        Console.ReadKey();
+        ConsoleHelpers.GoBackToMainMenu();
     }
 
     public static void EditAsset()
@@ -134,8 +133,7 @@ public static class MenuActions
                 ConsoleHelpers.WriteColoredText(ConsoleColor.Green, "Successfully saved changes");
 
                 Console.WriteLine();
-                Console.WriteLine("Press any key to go back to main menu");
-                Console.ReadKey();
+                ConsoleHelpers.GoBackToMainMenu();
             }
         }
     }
@@ -160,8 +158,7 @@ public static class MenuActions
                 ConsoleHelpers.WriteColoredText(ConsoleColor.Green, "Successfully deleted asset");
 
                 Console.WriteLine();
-                Console.WriteLine("Press any key to go back to main menu");
-                Console.ReadKey();
+                ConsoleHelpers.GoBackToMainMenu();
             }
             else if (key == ConsoleKey.N) 
             {

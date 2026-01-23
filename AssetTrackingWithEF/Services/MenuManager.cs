@@ -27,8 +27,6 @@ internal class MenuManager
             case "1":
                 ShowHeader("All your assets");
                 ConsoleHelpers.RenderSortOptionsAndShowTable();
-                //Console.WriteLine("Press any key to go back to main menu");
-                //Console.ReadKey();
                 return false;
 
             case "2":
@@ -49,8 +47,7 @@ internal class MenuManager
             case "5":
                 ShowHeader("Report of all your assets");
                 MenuActions.GenerateAssetsReport();
-                Console.WriteLine("Press any key to go back to main menu");
-                Console.ReadKey();
+                ConsoleHelpers.GoBackToMainMenu();
                 return false;
 
             case "6":
@@ -60,8 +57,7 @@ internal class MenuManager
             default:
                 ConsoleHelpers.WriteColoredText(ConsoleColor.Red, "Invalid option");
                 Console.WriteLine();
-                Console.WriteLine("Press any key to go back to main menu");
-                Console.ReadKey();
+                ConsoleHelpers.GoBackToMainMenu();
                 return false;
         }
     }

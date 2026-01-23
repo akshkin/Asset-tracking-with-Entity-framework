@@ -102,8 +102,7 @@ public static class ConsoleHelpers
 
             MenuActions.ShowAssetsTable(selectedOption.ToLower());
 
-            Console.WriteLine("Press any key to go back to main menu");
-            Console.ReadKey();
+            ConsoleHelpers.GoBackToMainMenu();
         }
     }
 
@@ -151,5 +150,11 @@ public static class ConsoleHelpers
             Console.WriteLine($"{office.office.OfficeLocation}: {office.totalValue} {office.office.CurrencyCode}");
         }
         Console.WriteLine();
+    }
+
+    public static void GoBackToMainMenu()
+    {
+        Console.WriteLine("Press any key to go back to main menu");
+        Console.ReadKey();
     }
 }
