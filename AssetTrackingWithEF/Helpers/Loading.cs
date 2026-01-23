@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace AssetTrackingWithEF.Helpers;
+﻿namespace AssetTrackingWithEF.Helpers;
 public static class LoadingAnimation
 {
     private static bool _running;
